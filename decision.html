@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Making - Education with Zeez 143</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: #f4f4f9; }
+        .container { padding: 30px; max-width: 850px; margin: 30px auto; background: white; shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 12px; }
+        h1 { color: #d32f2f; border-bottom: 3px solid #d32f2f; text-align: center; }
+        h2 { color: #1976d2; border-left: 5px solid #1976d2; padding-left: 10px; margin-top: 30px; }
+        .box { background: #f9f9f9; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin: 10px 0; }
+        .syntax { background: #fffde7; padding: 10px; border-left: 4px solid #fbc02d; font-family: monospace; font-weight: bold; }
+        .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; margin: 10px 0; }
+        .flowchart-placeholder { text-align: center; padding: 20px; background: #e3f2fd; border: 2px dashed #2196f3; border-radius: 10px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Decision Making Statements</h1>
+    <p>Decision making structures require the programmer to specify one or more conditions to be evaluated by the program.</p>
+
+    <style>
+    .flow-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin: 20px 0;
+    }
+    .diamond {
+        width: 100px;
+        height: 100px;
+        background: #fffde7;
+        border: 2px solid #fbc02d;
+        transform: rotate(45deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px 0;
+    }
+    .diamond span { transform: rotate(-45deg); font-weight: bold; }
+    .box-path {
+        padding: 10px 20px;
+        border: 2px solid #1976d2;
+        border-radius: 5px;
+        background: #e3f2fd;
+    }
+</style>
+
+<div class="flow-container">
+    <div class="box-path">START</div>
+    <div class="diamond"><span>Condition</span></div>
+    <div style="display: flex; gap: 50px;">
+        <div class="box-path" style="border-color: green;">TRUE (Code A)</div>
+        <div class="box-path" style="border-color: red;">FALSE (Code B)</div>
+    </div>
+</div>
+
+   <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+    
+    <!-- IF Example -->
+    <div style="flex: 1; min-width: 300px; background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+        <h3 style="color: #d32f2f; margin-top: 0;">1. Simple If</h3>
+        <p><b>This is used when you only care if the condition is True. If it's False, the program just moves on to the next line.
+</b></p>
+<div class="box">
+    <h3>1. Simple If Syntax</h3>
+    <p class="syntax">
+        if (condition) { <br>
+        &nbsp;&nbsp;// code to be executed if condition is true <br>
+        }
+    </p>
+</div>
+        <div class="code-block" style="font-size: 14px; padding: 10px;">
+            if (age >= 18) { <br>
+            &nbsp;&nbsp;printf("You are an adult."); <br>
+            }
+        </div>
+        <p><small>If the condition is false, the program does nothing and moves to the next line.</small></p>
+    </div>
+
+    <!-- IF-ELSE Example -->
+    <div style="flex: 1; min-width: 300px; background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+        <h3 style="color: #1976d2; margin-top: 0;">2. If-Else</h3>
+        <p><b>This is used when you want to provide two different paths: one for True and one for False.</b></p>
+        <div class="box"><h3>2. If-Else Syntax</h3>
+    <p class="syntax">
+        if (condition) { <br>
+        &nbsp;&nbsp;// code if condition is true <br>
+        } <br>
+        else { <br>
+        &nbsp;&nbsp;// code if condition is false <br>
+        }
+    </p>
+</div>
+        <div class="code-block" style="font-size: 14px; padding: 10px;">
+            if (age >= 18) { <br>
+            &nbsp;&nbsp;printf("Eligible to vote"); <br>
+            } else { <br>
+            &nbsp;&nbsp;printf("Not eligible"); <br>
+            }
+        </div>
+        <p><small>This provides a specific plan for both <b>True</b> and <b>False</b> results.</small></p>
+    </div>
+
+</div>
+
+    <!-- SWITCH Statement -->
+    <h2>3. Switch Statement</h2>
+    <div class="box">
+        <b>Definition:</b> It allows a variable to be tested for equality against a list of values (cases).
+        <p class="syntax">syntax:<br>switch(expression) { <br> &nbsp;&nbsp;case value1: //code; break;<br> &nbsp;&nbsp;default: //code; <br>}</p>
+    </div>
+
+    <h2>Full Example: Even or Odd</h2>
+    <div class="code-block">
+        #include &lt;stdio.h&gt;<br>
+        void main() {<br>
+        &nbsp;&nbsp;int num;<br>
+        &nbsp;&nbsp;printf("Enter a number: ");<br>
+        &nbsp;&nbsp;scanf("%d", &num);<br><br>
+        &nbsp;&nbsp;if (num % 2 == 0) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;printf("%d is Even", num);<br>
+        &nbsp;&nbsp;} else {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;printf("%d is Odd", num);<br>
+        &nbsp;&nbsp;}<br>
+        }
+    </div>
+        <hr>
+    <h2>Nested If-Else: Largest of Three Numbers</h2>
+    <p><b>Definition:</b> A nested if-else is an if-else statement inside another if or else block. It is used when we need to check multiple conditions one after another.</p>
+
+    
+    <div class="code-block">
+        #include &lt;stdio.h&gt;<br>
+        void main() {<br>
+        &nbsp;&nbsp;int a, b, c;<br>
+        &nbsp;&nbsp;printf("Enter three numbers: ");<br>
+        &nbsp;&nbsp;scanf("%d %d %d", &a, &b, &c);<br><br>
+        &nbsp;&nbsp;if (a >= b) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;if (a >= c)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d is the largest", a);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;else<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d is the largest", c);<br>
+        &nbsp;&nbsp;} else {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;if (b >= c)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d is the largest", b);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;else<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d is the largest", c);<br>
+        &nbsp;&nbsp;}<br>
+        }
+    </div>
+
+    <div class="box" style="border-left: 5px solid #4caf50;">
+        <b>Logic Explained:</b><br>
+        1. First, we compare <code>a</code> and <code>b</code>.<br>
+        2. If <code>a</code> is bigger, we then compare <code>a</code> with <code>c</code>.<br>
+        3. If <code>b</code> was bigger, we compare <code>b</code> with <code>c</code>.
+    </div>
+
+</div>
+    <hr>
+    <h2>Important Points to Remember</h2>
+    
+    <div class="box" style="border-left: 5px solid #673ab7; background-color: #f3e5f5;">
+        <ul>
+            <li><b>If Statement:</b>
+                <ul>
+                    <li>In C, any non-zero value is treated as <b>TRUE</b>, and zero is treated as <b>FALSE</b>.</li>
+                    <li>If you only have one line of code after <code>if</code>, the curly braces <code>{ }</code> are optional, but recommended for clarity.</li>
+                </ul>
+            </li>
+            
+            <li><b>If-Else Statement:</b>
+                <ul>
+                    <li>The <code>else</code> block cannot exist without a matching <code>if</code>.</li>
+                    <li>It creates a "mutually exclusive" choice—only one of the two blocks will ever run.</li>
+                </ul>
+            </li>
+            
+            <li><b>Switch Statement:</b>
+                <ul>
+                    <li><b>The Break Keyword:</b> If you forget <code>break;</code>, the program will "fall through" and execute all following cases until it hits a break or the end.</li>
+                    <li><b>Constant Values:</b> Case labels must be constants or literals (like <code>1</code>, <code>2</code>, or <code>'A'</code>). You cannot use variables or expressions in case labels.</li>
+                    <li><b>Default Case:</b> The <code>default</code> block is optional but good practice; it runs if no case matches.</li>
+                </ul>
+            </li>
+            
+            <li><b>Nested If-Else:</b>
+                <ul>
+                    <li><b>Indentation:</b> Always indent your code properly so you can see which <code>else</code> belongs to which <code>if</code>.</li>
+                    <li>There is no limit to how many levels you can nest, but nesting too deep (more than 3 levels) makes code hard to read.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div style="background-color: #ffebee; padding: 15px; border: 1px solid #f44336; border-radius: 8px; margin-top: 20px;">
+        <strong>Common Mistake:</strong> Using a single <code>=</code> instead of double <code>==</code> in conditions. <br>
+        <i>Example:</i> <code>if(x = 5)</code> will always be true because it assigns 5 to x. Use <code>if(x == 5)</code> to compare.
+    </div>
+
+
+</body>
+</html>
