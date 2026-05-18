@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" >
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>education with zeez</title>
-</head>
-<body>
-<style>
-    .navbar {
+    <title>EDUCATION WITH ZEE</title>
+    <style>
+      img {
+  
+  max-width: 100%;
+  height: auto; 
+  object-fit: cover; 
+  display: block; 
+  image-rendering: -webkit-optimize-contrast;
+}
+.pro-card {
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect used on many e-commerce sites */
+.pro-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+  .navbar {
   overflow: hidden;
   background-color: #333;
 }
@@ -60,174 +76,94 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
-.dropdown .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-  cursor: pointer;
-}
-.navbar a:hover, .drop:hover .dropbtn {
-  background-color: red;
-}
-.drop {
-  float: left;
-  overflow: hidden;
-}
-.drop .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-  cursor: pointer;
-}
-.navbar a:hover, .drop:hover .dropbtn {
-  background-color: red;
-}
-.drop-unit1 {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.drop-unit1 a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-.drop-unit1 a:hover {
-  background-color: #ddd;
-}
-.drop:hover .drop-unit1 {
-  display: block;
-}
-
-.drop .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-  cursor: pointer;
-}
-.navbar a:hover, .drop:hover .dropbtn {
-  background-color: red;
-}
-.down-unit2 {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.down-unit2 a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-.down-unit2 a:hover {
-  background-color: #ddd;
-}
-.down:hover .down-unit2 {
-  display: block;
-}
-
-.down .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-  cursor: pointer;
-}
-.navbar a:hover, .doen:hover .dropbtn {
-  background-color: red;
-}
-.navbar a:hover, .down:hover .dropbtn {
-  background-color: red;
-}
-.down {
-  float: left;
-  overflow: hidden;
-}
-.down .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-  cursor: pointer;
-}
-.navbar a:hover, .down:hover .dropbtn {
-  background-color: red;
-}
-
-
-</style>
-<div class="navbar">
+    </style>
+</head>
+<body>
+  <div class="navbar">
   <a href="home.html">HOME</a>
-  <a href="aboutus.html">ABOUT US</a>
   <a href="contact.html">CONTACT</a>
-  <a href="https://htmlsem2zeez.vercel.app/">HTML PAGE</a>
-  <a href="https://edu-seven-bay.vercel.app/">C++ PAGE</a>
-  <a href="zeez.html">ZEEZ</a>
-    <div class="drop">
-    <button class="dropbtn">UNIT1
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="drop-unit1">
-      <a href="loop.html">LOOPING STATEMENTS</a>
-      <a href="decision.html">DECISION MAKING</a>
-  </div> 
-</div>
-    <div class="down">
-    <button class="dropbtn">UNIT2
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="down-unit2">
-      <a href="array.html"></a>
-      <a href=""></a>
-      <a href=""></a>
-      <a href=""></a>
-  </div> 
-</div>
-     <div class="dropdown">
-    <button class="dropbtn">UNIT3
+  <a href="aboutus.html">ABOUTUS</a>
+ 
+    <div class="dropdown">
+    <button class="dropbtn">UNITS
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href=""></a>
-      <a href=""></a>
-    </div>
-    </div>
+      <a href="unit1.html">UNIT 1</a>
+      <a href="unit2.html">UNIT 2</a>
+      <a href="unit3.html">UNIT 3</a>
+      <a href="unit4.html">UNIT 4</a>
+      <a href="unit5.html">UNIT 5</a>
+      
+  </div> 
 </div>
-<h1><b><strong><i>WELCOME TO ZEEZ</i></strong></b></h1>
-<img src="zeez143.png" width="380px" alt="" srcset="">
+<div class="dropdown">
+    <button class="dropbtn">OTHER PAGES
+    <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="https://digitalsem1zeez.vercel.app/">DIGITAL PAGE</a>
+       <a href="https://edu-seven-bay.vercel.app/">C++ PAGE</a>
+  <a href="https://microsem2zeez.vercel.app/">MICROPROCESSOR PAGE</a>
+  <A href="https://htmlsem2zeez.vercel.app/">HTML PAGE</A>
+      
+  </div> 
+</div>
+  </div>
+<br>
+<h1><I>WELCOME TO ZEEZ</I></h1>
+<img class="pro-card" src="zeez143.png" alt="unknow">
+<br><br>
+<style>
+  /* Button container and general styling */
+  .button-box {
+    margin: 20px 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+
+  /* Professional Button Design */
+  .view-btn {
+    display: inline-block;
+    background-color: #007bff; /* Primary Blue */
+    color: white;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none; /* Removes underline from <a> */
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Hover and Active effects */
+  .view-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .view-btn:active {
+    transform: translateY(0);
+  }
+
+  /* Heading styling */
+  .university-title {
+    color: #2c3e50;
+    border-left: 5px solid #007bff;
+    padding-left: 15px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+  }
+</style>
+
+<h2 class="university-title">C LANGUAGE Alagappa University</h2>
+
+<div class="button-box">
+  <!-- Clean approach: Using the <a> tag styled as a button -->
+  <a href="" class="view-btn">VIEW QUESTIONS</a>
+</div>
+
 </body>
 </html>

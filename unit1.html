@@ -205,3 +205,144 @@
 
 </body>
 </html>
+
+
+<hr><hr>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Looping Statements - Education with Zeez 143</title>
+    <style>
+        /* General Page Styling */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            margin: 0; 
+            background-color: #f4f4f9;
+        }
+        .container { 
+            padding: 30px; 
+            max-width: 850px; 
+            margin: 30px auto; 
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
+        }
+        
+        /* Headers */
+        h1 { color: #d32f2f; border-bottom: 3px solid #d32f2f; padding-bottom: 10px; text-align: center; }
+        h2 { color: #1976d2; margin-top: 30px; border-left: 5px solid #1976d2; padding-left: 15px; background: #f0f7ff; padding-top: 5px; padding-bottom: 5px; }
+        
+        /* Code Box Styling */
+        .code-block { 
+            background-color: #2d2d2d; 
+            color: #f8f8f2; 
+            padding: 20px; 
+            border-radius: 8px; 
+            font-family: 'Courier New', Courier, monospace; 
+            overflow-x: auto; 
+            margin: 15px 0;
+            line-height: 1.4;
+        }
+        
+        /* Output Box Styling */
+        .output-box { 
+            background-color: #e8f5e9; 
+            border: 1px dashed #2e7d32; 
+            padding: 15px; 
+            color: #1b5e20;
+            font-family: monospace;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .desc { background: #f9f9f9; padding: 10px; border-left: 3px solid #666; font-style: italic; margin-bottom: 10px; }
+
+        /* Extra Points Section */
+        .extra-points {
+            background-color: #fffde7;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #fff59d;
+            margin-top: 40px;
+        }
+        .important-note {
+            background-color: #fff3e0;
+            padding: 15px;
+            border-left: 5px solid #ff9800;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        ul li { margin-bottom: 10px; }
+        code { background: #eee; padding: 2px 5px; border-radius: 3px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Looping Statements in C</h1>
+    <p>In C programming, loops are used to repeat a specific block of code until a condition is met. This helps in reducing code length and saving time.</p>
+
+    <!-- 1. For Loop -->
+    <h2>1. The For Loop</h2>
+    <p class="desc">Best used when the number of iterations is known in advance.</p>
+    <div class="code-block">
+        // Syntax: for(initialization; condition; increment/decrement)<br>
+        for(int i = 1; i <= 5; i++) {<br>
+        &nbsp;&nbsp;printf("%d ", i);<br>
+        }
+    </div>
+    <div class="output-box">
+        <strong>Output:</strong> 1 2 3 4 5
+    </div>
+
+    <!-- 2. While Loop -->
+    <h2>2. The While Loop</h2>
+    <p class="desc">An entry-controlled loop that repeats as long as the condition remains true.</p>
+    <div class="code-block">
+        int i = 1;<br>
+        while(i <= 3) {<br>
+        &nbsp;&nbsp;printf("Zeez ");<br>
+        &nbsp;&nbsp;i++;<br>
+        }
+    </div>
+    <div class="output-box">
+        <strong>Output:</strong> Zeez Zeez Zeez
+    </div>
+
+    <!-- 3. Do-While Loop -->
+    <h2>3. The Do-While Loop</h2>
+    <p class="desc">An exit-controlled loop that always executes the code at least once.</p>
+    <div class="code-block">
+        int i = 10;<br>
+        do {<br>
+        &nbsp;&nbsp;printf("Value is %d", i);<br>
+        &nbsp;&nbsp;i++;<br>
+        } while(i < 5); // Condition is false, but it runs once
+    </div>
+    <div class="output-box">
+        <strong>Output:</strong> Value is 10
+    </div>
+
+    <!-- Extra Points Section -->
+    <div class="extra-points">
+        <h3>Important Points to Remember</h3>
+        <ul>
+            <li><b>Entry Controlled Loops:</b> <code>for</code> and <code>while</code> check the condition <b>before</b> running the code.</li>
+            <li><b>Exit Controlled Loop:</b> <code>do-while</code> checks the condition <b>after</b> running the code.</li>
+            <li><b>Infinite Loop:</b> A loop that never ends, e.g., <code>while(1) { ... }</code>.</li>
+            <li><b>Break Statement:</b> Immediately exits the loop.</li>
+            <li><b>Continue Statement:</b> Skips the current turn and jumps to the next iteration.</li>
+        </ul>
+
+        <div class="important-note">
+            Exam Tip: Use a "do-while" loop when the program must execute the code block at least once (like a Menu-driven program).
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
