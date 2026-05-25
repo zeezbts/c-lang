@@ -3,62 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C Programming Content</title>
+    <title>C Programming Basics | Education with Zeez 143</title>
+    <!-- Premium Google Fonts & Developer Icons -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    
     <style>
-        /* Modern Typography */
+        /* Modern Unified Design Tokens */
+        :root {
+            --bg-body: #f8fafc;
+            --bg-surface: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --primary: #2563eb;
+            --danger: #dc2626;
+            --danger-light: #fef2f2;
+            --success: #16a34a;
+            
+            --bg-code: #0f172a;
+            --text-code: #f8fafc;
+            --border-color: #e2e8f0;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+        }
+
+        /* Layout Resets */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            line-height: 1.6; 
-            color: #333; 
-            margin: 0; 
-            background-color: #f9f9f9;
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            line-height: 1.7; 
+            color: var(--text-main); 
+            background-color: var(--bg-body); 
+            padding: 40px 20px;
         }
+
         .container { 
-            padding: 30px; 
-            max-width: 800px; 
-            margin: 20px auto; 
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-radius: 8px;
+            max-width: 900px; 
+            margin: 0 auto; 
+            background: var(--bg-surface); 
+            box-shadow: var(--shadow); 
+            border-radius: var(--radius-lg); 
+            padding: 45px;
+            border: 1px solid var(--border-color);
         }
-        
-        h1 { color: #d32f2f; border-bottom: 3px solid #d32f2f; padding-bottom: 10px; }
-        h2 { color: #1976d2; margin-top: 30px; }
-        
-        /* Info Highlight Box */
+
+        /* Header Restyling */
+        h1 { 
+            color: var(--danger); 
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-align: center; 
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--danger); 
+        }
+
+        h2 { 
+            color: var(--primary); 
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 45px; 
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary); 
+            padding-left: 15px; 
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #991b1b;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        p b {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        /* Refactored Infobox Layout */
         .info-box { 
-            background-color: #fff3f3; 
-            padding: 15px; 
-            border-left: 5px solid #d32f2f; 
-            margin: 20px 0; 
+            background-color: var(--danger-light); 
+            padding: 24px; 
+            border-left: 5px solid var(--danger); 
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: 30px 0; 
         }
 
-        /* Keyboard Shortcut Styling */
+        .shortcut-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px 25px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .shortcut-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Tactile Mechanical Keyboard Shortcut Rendering */
         kbd { 
-            background: #eee; border-radius: 3px; border: 1px solid #b4b4b4; 
-            box-shadow: 0 1px 1px rgba(0,0,0,.2);
-            color: #333; display: inline-block; font-size: .9em; 
-            padding: 2px 6px; font-family: monospace;
+            background: #f1f5f9; 
+            border-radius: 6px; 
+            border: 1px solid #cbd5e1; 
+            border-bottom-width: 3px;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.06);
+            color: #334155; 
+            display: inline-block; 
+            font-size: 0.85em; 
+            font-weight: 700;
+            padding: 3px 8px; 
+            font-family: 'JetBrains Mono', monospace;
         }
 
-        /* The Code Editor Look */
+        /* High-contrast Editor Styles */
         .code-block { 
-            background-color: #2d2d2d; 
-            color: #f8f8f2; 
-            padding: 20px; 
-            border-radius: 8px; 
-            font-family: 'Courier New', Courier, monospace; 
-            overflow-x: auto; 
-            margin: 15px 0;
+            background: var(--bg-code); 
+            color: var(--text-code); 
+            padding: 24px; 
+            border-radius: var(--radius-md); 
+            font-family: 'JetBrains Mono', monospace; 
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 20px 0; 
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.15);
         }
-        
-        /* The Output Result Look */
+
+        /* Modern Terminal Console Emulation Layout */
         .output-box { 
-            background-color: #e8f5e9; 
-            border: 1px dashed #2e7d32; 
-            padding: 15px; 
-            color: #1b5e20;
-            font-family: monospace;
+            background-color: #1e293b; 
+            border-left: 4px solid var(--success); 
+            padding: 20px; 
+            color: #38bdf8;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+            margin-top: 15px;
+        }
+
+        .output-box b {
+            color: #34d399;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -68,35 +179,36 @@
     <h1>C Programming Language</h1>
     <p>C is a high-performance, general-purpose programming language developed by <b>Dennis Ritchie</b>. It is the foundation for modern computing and operating systems.</p>
 
+    <!-- Refactored Shortcut Box Component -->
     <div class="info-box">
-        <h3>IDE Shortcuts (Turbo C):</h3>
-        <p>
-            <kbd>F2</kbd> Save &nbsp; | &nbsp; 
-            <kbd>F3</kbd> Open &nbsp; | &nbsp; 
-            <kbd>Alt+F9</kbd> Compile &nbsp; | &nbsp; 
-            <kbd>Ctrl+F9</kbd> Run
-        </p>
+        <h3><i class="fa-solid fa-keyboard"></i> IDE Shortcuts (Turbo C)</h3>
+        <div class="shortcut-grid">
+            <div class="shortcut-item"><kbd>F2</kbd> <span>Save File</span></div>
+            <div class="shortcut-item"><kbd>F3</kbd> <span>Open File</span></div>
+            <div class="shortcut-item"><kbd>Alt</kbd>+<kbd>F9</kbd> <span>Compile Code</span></div>
+            <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>F9</kbd> <span>Run Program</span></div>
+        </div>
     </div>
 
     <h2>Simple Program: Addition</h2>
     <p>This program asks the user for two integers and displays their sum.</p>
     
     <div class="code-block">
-        #include &lt;stdio.h&gt;<br>
-        #include &lt;conio.h&gt;<br><br>
-        void main() <br>
-        { <br> 
-        &nbsp;&nbsp;int a, b, c; <br>
-        &nbsp;&nbsp;clrscr(); <br>
-        &nbsp;&nbsp;printf("Enter the value of a & b: "); <br>
-        &nbsp;&nbsp;scanf("%d %d", &a, &b); <br>
-        &nbsp;&nbsp;c = a + b; <br>
-        &nbsp;&nbsp;printf("Total: %d", c); <br>
-        &nbsp;&nbsp;getch(); <br>
-        } 
+#include &lt;stdio.h&gt;<br>
+#include &lt;conio.h&gt;<br><br>
+void main() <br>
+{ <br> 
+&nbsp;&nbsp;int a, b, c; <br>
+&nbsp;&nbsp;clrscr(); <br>
+&nbsp;&nbsp;printf("Enter the value of a & b: "); <br>
+&nbsp;&nbsp;scanf("%d %d", &a, &b); <br>
+&nbsp;&nbsp;c = a + b; <br>
+&nbsp;&nbsp;printf("Total: %d", c); <br>
+&nbsp;&nbsp;getch(); <br>
+} 
     </div>
 
-    <h2>Program Output:</h2>
+    <h2>Program Output</h2>
     <div class="output-box">
         Enter the value of a & b: 10 10<br>
         <b>Total: 20</b>

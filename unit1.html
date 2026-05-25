@@ -5,109 +5,260 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decision Making - Education with Zeez 143</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: #f4f4f9; }
-        .container { padding: 30px; max-width: 850px; margin: 30px auto; background: white; shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 12px; }
-        h1 { color: #d32f2f; border-bottom: 3px solid #d32f2f; text-align: center; }
-        h2 { color: #1976d2; border-left: 5px solid #1976d2; padding-left: 10px; margin-top: 30px; }
-        .box { background: #f9f9f9; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin: 10px 0; }
-        .syntax { background: #fffde7; padding: 10px; border-left: 4px solid #fbc02d; font-family: monospace; font-weight: bold; }
-        .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; margin: 10px 0; }
-        .flowchart-placeholder { text-align: center; padding: 20px; background: #e3f2fd; border: 2px dashed #2196f3; border-radius: 10px; margin: 20px 0; }
+        /* Modern Design System Tokens */
+        :root {
+            --bg-body: #f8fafc;
+            --bg-surface: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --primary: #2563eb;
+            --danger: #dc2626;
+            --success: #16a34a;
+            --accent-yellow: #ca8a04;
+            --bg-syntax: #fef08a;
+            --bg-code: #0f172a;
+            --text-code: #e2e8f0;
+            --border-color: #cbd5e1;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Core Layout Resets */
+        body { 
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; 
+            line-height: 1.7; 
+            color: var(--text-main); 
+            margin: 0; 
+            background-color: var(--bg-body); 
+            padding: 20px;
+        }
+
+        .container { 
+            max-width: 900px; 
+            margin: 40px auto; 
+            background: var(--bg-surface); 
+            box-shadow: var(--shadow); 
+            border-radius: var(--radius-md); 
+            padding: 40px;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        /* Pro Typography */
+        h1 { 
+            color: var(--danger); 
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-align: center; 
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--danger); 
+        }
+
+        h2 { 
+            color: var(--primary); 
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 40px; 
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary); 
+            padding-left: 15px; 
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        p b {
+            color: var(--text-main);
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border-color);
+            margin: 40px 0;
+        }
+
+        /* Card and Boxes Elements */
+        .box { 
+            background: #f8fafc; 
+            padding: 20px; 
+            border: 1px solid var(--border-color); 
+            border-radius: var(--radius-sm); 
+            margin: 20px 0; 
+        }
+
+        /* Premium Syntax and Code Blocks */
+        .syntax { 
+            background: #fefce8; 
+            padding: 15px; 
+            border-left: 4px solid var(--accent-yellow); 
+            font-family: 'JetBrains Mono', 'Fira Code', monospace; 
+            font-size: 0.95rem;
+            font-weight: 600; 
+            color: #713f12;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin-top: 10px;
+        }
+
+        .code-block { 
+            background: var(--bg-code); 
+            color: var(--text-code); 
+            padding: 24px; 
+            border-radius: var(--radius-sm); 
+            font-family: 'JetBrains Mono', 'Fira Code', monospace; 
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 20px 0; 
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Flowchart Interactive Components Rendering */
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin: 35px 0;
+            padding: 20px;
+            background: #f1f5f9;
+            border-radius: var(--radius-md);
+        }
+
+        .box-path {
+            padding: 10px 24px;
+            border: 2px solid var(--primary);
+            border-radius: 6px;
+            background: #eff6ff;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .diamond {
+            width: 90px;
+            height: 90px;
+            background: #fefce8;
+            border: 2px solid var(--accent-yellow);
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 25px 0;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .diamond span { 
+            transform: rotate(-45deg); 
+            font-weight: 700; 
+            color: #713f12;
+            font-size: 0.85rem;
+        }
+
+        /* Modern Grid Layout Adjustments */
+        .flex-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .flex-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .flex-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Helper Inline Formatting Refinements */
+        small {
+            display: block;
+            color: var(--text-muted);
+            margin-top: 10px;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
-
 <div class="container">
-    <h1>Decision Making Statements</h1>
-    <p>Decision making structures require the programmer to specify one or more conditions to be evaluated by the program.</p>
-
-    <style>
-    .flow-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        margin: 20px 0;
-    }
-    .diamond {
-        width: 100px;
-        height: 100px;
-        background: #fffde7;
-        border: 2px solid #fbc02d;
-        transform: rotate(45deg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 20px 0;
-    }
-    .diamond span { transform: rotate(-45deg); font-weight: bold; }
-    .box-path {
-        padding: 10px 20px;
-        border: 2px solid #1976d2;
-        border-radius: 5px;
-        background: #e3f2fd;
-    }
-</style>
+<h1>Decision Making Statements</h1>
+<p>Decision making structures require the programmer to specify one or more conditions to be evaluated by the program.</p>
 
 <div class="flow-container">
-    <div class="box-path">START</div>
-    <div class="diamond"><span>Condition</span></div>
-    <div style="display: flex; gap: 50px;">
-        <div class="box-path" style="border-color: green;">TRUE (Code A)</div>
-        <div class="box-path" style="border-color: red;">FALSE (Code B)</div>
-    </div>
+   <div class="box-path">START</div>
+   <div class="diamond"><span>Condition</span></div>
+   <div style="display: flex; gap: 30px;">
+       <div class="box-path" style="border-color: var(--success); background: #f0fdf4; color: var(--success);">TRUE (Code A)</div>
+       <div class="box-path" style="border-color: var(--danger); background: #fef2f2; color: var(--danger);">FALSE (Code B)</div>
+   </div>
 </div>
 
-   <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-    
-    <!-- IF Example -->
-    <div style="flex: 1; min-width: 300px; background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
-        <h3 style="color: #d32f2f; margin-top: 0;">1. Simple If</h3>
-        <p><b>This is used when you only care if the condition is True. If it's False, the program just moves on to the next line.
-</b></p>
-<div class="box">
-    <h3>1. Simple If Syntax</h3>
-    <p class="syntax">
-        if (condition) { <br>
-        &nbsp;&nbsp;// code to be executed if condition is true <br>
-        }
-    </p>
-</div>
-        <div class="code-block" style="font-size: 14px; padding: 10px;">
+<div class="flex-container">
+    <div class="flex-card">
+        <h3 style="color: var(--danger); margin-top: 0;">1. Simple If</h3>
+        <p><b>This is used when you only care if the condition is True. If it's False, the program just moves on to the next line.</b></p>
+        <div class="box">
+            <h3 style="color: var(--text-main);">1. Simple If Syntax</h3>
+            <p class="syntax">
+                if (condition) { <br>
+                &nbsp;&nbsp;// code to be executed if condition is true <br>
+                }
+            </p>
+        </div>
+        <div class="code-block" style="font-size: 14px; padding: 15px; margin: 10px 0;">
             if (age >= 18) { <br>
             &nbsp;&nbsp;printf("You are an adult."); <br>
             }
         </div>
-        <p><small>If the condition is false, the program does nothing and moves to the next line.</small></p>
+        <small>If the condition is false, the program does nothing and moves to the next line.</small>
     </div>
 
-    <!-- IF-ELSE Example -->
-    <div style="flex: 1; min-width: 300px; background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
-        <h3 style="color: #1976d2; margin-top: 0;">2. If-Else</h3>
+    <div class="flex-card">
+        <h3 style="color: var(--primary); margin-top: 0;">2. If-Else</h3>
         <p><b>This is used when you want to provide two different paths: one for True and one for False.</b></p>
-        <div class="box"><h3>2. If-Else Syntax</h3>
-    <p class="syntax">
-        if (condition) { <br>
-        &nbsp;&nbsp;// code if condition is true <br>
-        } <br>
-        else { <br>
-        &nbsp;&nbsp;// code if condition is false <br>
-        }
-    </p>
-</div>
-        <div class="code-block" style="font-size: 14px; padding: 10px;">
+        <div class="box">
+            <h3 style="color: var(--text-main);">2. If-Else Syntax</h3>
+            <p class="syntax">
+                if (condition) { <br>
+                &nbsp;&nbsp;// code if condition is true <br>
+                } <br>
+                else { <br>
+                &nbsp;&nbsp;// code if condition is false <br>
+                }
+            </p>
+        </div>
+        <div class="code-block" style="font-size: 14px; padding: 15px; margin: 10px 0;">
             if (age >= 18) { <br>
             &nbsp;&nbsp;printf("Eligible to vote"); <br>
             } else { <br>
             &nbsp;&nbsp;printf("Not eligible"); <br>
             }
         </div>
-        <p><small>This provides a specific plan for both <b>True</b> and <b>False</b> results.</small></p>
+        <small>This provides a specific plan for both <b>True</b> and <b>False</b> results.</small>
     </div>
-
 </div>
 
-    <!-- SWITCH Statement -->
     <h2>3. Switch Statement</h2>
     <div class="box">
         <b>Definition:</b> It allows a variable to be tested for equality against a list of values (cases).
@@ -128,11 +279,11 @@
         &nbsp;&nbsp;}<br>
         }
     </div>
-        <hr>
+    
+    <hr>
+    
     <h2>Nested If-Else: Largest of Three Numbers</h2>
     <p><b>Definition:</b> A nested if-else is an if-else statement inside another if or else block. It is used when we need to check multiple conditions one after another.</p>
-
-    
     <div class="code-block">
         #include &lt;stdio.h&gt;<br>
         void main() {<br>
@@ -142,29 +293,286 @@
         &nbsp;&nbsp;if (a >= b) {<br>
         &nbsp;&nbsp;&nbsp;&nbsp;if (a >= c)<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d is the largest", a);<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;else<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d is the largest", c);<br>
-        &nbsp;&nbsp;} else {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;if (b >= c)<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d is the largest", b);<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;else<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d is the largest", c);<br>
-        &nbsp;&nbsp;}<br>
-        }
-    </div>
+        <h2>Nested If-Else: Largest of Three Numbers</h2>
+<p><b>Definition:</b> A nested if-else is an if-else statement inside another if or else block. It is used when we need to check multiple conditions one after another.</p>
 
-    <div class="box" style="border-left: 5px solid #4caf50;">
-        <b>Logic Explained:</b><br>
-        1. First, we compare <code>a</code> and <code>b</code>.<br>
-        2. If <code>a</code> is bigger, we then compare <code>a</code> with <code>c</code>.<br>
-        3. If <code>b</code> was bigger, we compare <code>b</code> with <code>c</code>.
-    </div>
-
-</div>
-    <hr>
-    <h2>Important Points to Remember</h2>
+<div class="code-block">
+    #include &lt;stdio.h&gt;<br>
+    void main() {<br>
+    &nbsp;&nbsp;int a, b, c;<br>
+    &nbsp;&nbsp;printf("Enter three numbers: ");<br>
+    &nbsp;&nbsp;scanf("%d %d %d", &a, &b, &c);<br><br>
+    &nbsp;&nbsp;if (a >= b) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;if (a >= c)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d is the largest", a);<br>
     
-    <div class="box" style="border-left: 5px solid #673ab7; background-color: #f3e5f5;">
+    <!-- YOUR SELECTED TEXT STARTS HERE -->
+    &nbsp;&nbsp;&nbsp;&nbsp;else<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d is the largest", c);<br>
+    &nbsp;&nbsp;} else {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;if (b >= c)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d is the largest", b);<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;else<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d is the largest", c);<br>
+    &nbsp;&nbsp;}<br>
+    }
+    <!-- YOUR SELECTED TEXT ENDS HERE -->
+</div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Looping & Decision Structures | Education with Zeez 143</title>
+    <!-- Premium Google Fonts & Developer Icons -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    
+    <style>
+        /* Modern Design System Tokens */
+        :root {
+            --bg-body: #f8fafc;
+            --bg-surface: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --primary: #2563eb;
+            --primary-light: #eff6ff;
+            --danger: #dc2626;
+            --danger-light: #fef2f2;
+            --success: #16a34a;
+            --success-light: #f0fdf4;
+            --purple: #7c3aed;
+            --purple-light: #f5f3ff;
+            --warning: #ea580c;
+            --warning-light: #fff7ed;
+            
+            --bg-code: #0f172a;
+            --text-code: #f8fafc;
+            --border-color: #e2e8f0;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+        }
+
+        /* Core Layout Resets */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            line-height: 1.7; 
+            color: var(--text-main); 
+            background-color: var(--bg-body); 
+            padding: 40px 20px;
+        }
+
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto 40px auto; 
+            background: var(--bg-surface); 
+            box-shadow: var(--shadow); 
+            border-radius: var(--radius-lg); 
+            padding: 45px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Pro Typography */
+        h1 { 
+            color: var(--danger); 
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-align: center; 
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--danger); 
+        }
+
+        h2 { 
+            color: var(--primary); 
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 45px; 
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary); 
+            padding-left: 15px; 
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        p b {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border-color);
+            margin: 45px 0;
+        }
+
+        /* Pro Lists Framework */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            color: var(--text-muted);
+        }
+
+        ul li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.3rem;
+            position: absolute;
+            left: 5px;
+            top: -2px;
+        }
+
+        /* Nested list refinements */
+        ul ul {
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        
+        ul ul li {
+            font-size: 0.95rem;
+        }
+
+        ul ul li::before {
+            content: "◦";
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            top: -1px;
+        }
+
+        /* Modular Alert Boxes & Explanations */
+        .box { 
+            padding: 24px; 
+            border: 1px solid var(--border-color); 
+            border-radius: var(--radius-md); 
+            margin: 25px 0; 
+            background-color: var(--bg-body);
+        }
+
+        /* Theme Variants for Explanations (Replacing hardcoded inline borders) */
+        .box-success {
+            border-left: 5px solid var(--success);
+            background-color: var(--success-light);
+        }
+
+        .box-purple {
+            border-left: 5px solid var(--purple);
+            background-color: var(--purple-light);
+        }
+
+        .box-warning {
+            border-left: 5px solid var(--warning);
+            background-color: var(--warning-light);
+        }
+
+        .box-danger {
+            border: 1px solid var(--danger);
+            background-color: var(--danger-light);
+        }
+
+        .desc { 
+            background: var(--bg-body); 
+            padding: 12px 20px; 
+            border-left: 3px solid var(--text-muted); 
+            font-style: italic; 
+            color: var(--text-muted);
+            margin-bottom: 15px; 
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        /* Premium Production Code Blocks */
+        .code-block { 
+            background: var(--bg-code); 
+            color: var(--text-code); 
+            padding: 24px; 
+            border-radius: var(--radius-md); 
+            font-family: 'JetBrains Mono', monospace; 
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 20px 0; 
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Standardized Inline Code Badge */
+        code { 
+            background: var(--border-color); 
+            padding: 2px 6px; 
+            border-radius: 4px; 
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 600; 
+            color: var(--danger);
+        }
+
+        /* Terminal Console Output Emulation Box */
+        .output-box { 
+            background-color: #1e293b; 
+            border-left: 4px solid var(--success); 
+            padding: 16px 20px; 
+            color: #38bdf8;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            margin-top: -10px;
+            margin-bottom: 25px;
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            box-shadow: var(--shadow);
+        }
+
+        .output-box strong {
+            color: #f1f5f9;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- COMPONENT 1: Remaining Portion of Decision Making Section -->
+<div class="container">
+    <div class="box box-success">
+        <h3><i class="fa-solid fa-gears" style="color: var(--success); margin-right: 8px;"></i> Logic Explained</h3>
+        <ul>
+            <li>First, we compare <code>a</code> and <code>b</code>.</li>
+            <li>If <code>a</code> is bigger, we then compare <code>a</code> with <code>c</code>.</li>
+            <li>If <code>b</code> was bigger, we compare <code>b</code> with <code>c</code>.</li>
+        </ul>
+    </div>
+    
+    <hr>
+    
+    <h2>Important Points to Remember</h2>
+    <div class="box box-purple">
         <ul>
             <li><b>If Statement:</b>
                 <ul>
@@ -172,22 +580,19 @@
                     <li>If you only have one line of code after <code>if</code>, the curly braces <code>{ }</code> are optional, but recommended for clarity.</li>
                 </ul>
             </li>
-            
             <li><b>If-Else Statement:</b>
                 <ul>
                     <li>The <code>else</code> block cannot exist without a matching <code>if</code>.</li>
                     <li>It creates a "mutually exclusive" choice—only one of the two blocks will ever run.</li>
                 </ul>
             </li>
-            
             <li><b>Switch Statement:</b>
                 <ul>
                     <li><b>The Break Keyword:</b> If you forget <code>break;</code>, the program will "fall through" and execute all following cases until it hits a break or the end.</li>
                     <li><b>Constant Values:</b> Case labels must be constants or literals (like <code>1</code>, <code>2</code>, or <code>'A'</code>). You cannot use variables or expressions in case labels.</li>
                     <li><b>Default Case:</b> The <code>default</code> block is optional but good practice; it runs if no case matches.</li>
                 </ul>
-            </li>
-            
+            </li> 
             <li><b>Nested If-Else:</b>
                 <ul>
                     <li><b>Indentation:</b> Always indent your code properly so you can see which <code>else</code> belongs to which <code>if</code>.</li>
@@ -196,92 +601,7 @@
             </li>
         </ul>
     </div>
-
-    <div style="background-color: #ffebee; padding: 15px; border: 1px solid #f44336; border-radius: 8px; margin-top: 20px;">
-        <strong>Common Mistake:</strong> Using a single <code>=</code> instead of double <code>==</code> in conditions. <br>
-        <i>Example:</i> <code>if(x = 5)</code> will always be true because it assigns 5 to x. Use <code>if(x == 5)</code> to compare.
-    </div>
-
-
-</body>
-</html>
-
-
-<hr><hr>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Looping Statements - Education with Zeez 143</title>
-    <style>
-        /* General Page Styling */
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            line-height: 1.6; 
-            color: #333; 
-            margin: 0; 
-            background-color: #f4f4f9;
-        }
-        .container { 
-            padding: 30px; 
-            max-width: 850px; 
-            margin: 30px auto; 
-            background: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-radius: 12px;
-        }
-        
-        /* Headers */
-        h1 { color: #d32f2f; border-bottom: 3px solid #d32f2f; padding-bottom: 10px; text-align: center; }
-        h2 { color: #1976d2; margin-top: 30px; border-left: 5px solid #1976d2; padding-left: 15px; background: #f0f7ff; padding-top: 5px; padding-bottom: 5px; }
-        
-        /* Code Box Styling */
-        .code-block { 
-            background-color: #2d2d2d; 
-            color: #f8f8f2; 
-            padding: 20px; 
-            border-radius: 8px; 
-            font-family: 'Courier New', Courier, monospace; 
-            overflow-x: auto; 
-            margin: 15px 0;
-            line-height: 1.4;
-        }
-        
-        /* Output Box Styling */
-        .output-box { 
-            background-color: #e8f5e9; 
-            border: 1px dashed #2e7d32; 
-            padding: 15px; 
-            color: #1b5e20;
-            font-family: monospace;
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
-
-        .desc { background: #f9f9f9; padding: 10px; border-left: 3px solid #666; font-style: italic; margin-bottom: 10px; }
-
-        /* Extra Points Section */
-        .extra-points {
-            background-color: #fffde7;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #fff59d;
-            margin-top: 40px;
-        }
-        .important-note {
-            background-color: #fff3e0;
-            padding: 15px;
-            border-left: 5px solid #ff9800;
-            margin-top: 20px;
-            font-weight: bold;
-        }
-        ul li { margin-bottom: 10px; }
-        code { background: #eee; padding: 2px 5px; border-radius: 3px; font-weight: bold; }
-    </style>
-</head>
-<body>
-
+<!-- COMPONENT: Looping Statements Structural Section -->
 <div class="container">
     <h1>Looping Statements in C</h1>
     <p>In C programming, loops are used to repeat a specific block of code until a condition is met. This helps in reducing code length and saving time.</p>
@@ -290,10 +610,10 @@
     <h2>1. The For Loop</h2>
     <p class="desc">Best used when the number of iterations is known in advance.</p>
     <div class="code-block">
-        // Syntax: for(initialization; condition; increment/decrement)<br>
-        for(int i = 1; i <= 5; i++) {<br>
-        &nbsp;&nbsp;printf("%d ", i);<br>
-        }
+// Syntax: for(initialization; condition; increment/decrement)
+for(int i = 1; i &lt;= 5; i++) {
+    printf("%d ", i);
+}
     </div>
     <div class="output-box">
         <strong>Output:</strong> 1 2 3 4 5
@@ -303,11 +623,11 @@
     <h2>2. The While Loop</h2>
     <p class="desc">An entry-controlled loop that repeats as long as the condition remains true.</p>
     <div class="code-block">
-        int i = 1;<br>
-        while(i <= 3) {<br>
-        &nbsp;&nbsp;printf("Zeez ");<br>
-        &nbsp;&nbsp;i++;<br>
-        }
+int i = 1;
+while(i &lt;= 3) {
+    printf("Zeez ");
+    i++;
+}
     </div>
     <div class="output-box">
         <strong>Output:</strong> Zeez Zeez Zeez
@@ -317,32 +637,33 @@
     <h2>3. The Do-While Loop</h2>
     <p class="desc">An exit-controlled loop that always executes the code at least once.</p>
     <div class="code-block">
-        int i = 10;<br>
-        do {<br>
-        &nbsp;&nbsp;printf("Value is %d", i);<br>
-        &nbsp;&nbsp;i++;<br>
-        } while(i < 5); // Condition is false, but it runs once
+int i = 10;
+do {
+    printf("Value is %d", i);
+    i++;
+} while(i &lt; 5); // Condition is false, but it runs once
     </div>
     <div class="output-box">
         <strong>Output:</strong> Value is 10
     </div>
 
     <!-- Extra Points Section -->
-    <div class="extra-points">
-        <h3>Important Points to Remember</h3>
+    <div class="box box-warning" style="margin-top: 40px;">
+        <h3 style="color: var(--warning); margin-bottom: 15px;">
+            <i class="fa-solid fa-lightbulb" style="margin-right: 8px;"></i> Important Points to Remember
+        </h3>
         <ul>
             <li><b>Entry Controlled Loops:</b> <code>for</code> and <code>while</code> check the condition <b>before</b> running the code.</li>
             <li><b>Exit Controlled Loop:</b> <code>do-while</code> checks the condition <b>after</b> running the code.</li>
-            <li><b>Infinite Loop:</b> A loop that never ends, e.g., <code>while(1) { ... }</code>.</li>
-            <li><b>Break Statement:</b> Immediately exits the loop.</li>
-            <li><b>Continue Statement:</b> Skips the current turn and jumps to the next iteration.</li>
+            <p class="desc" style="margin-top: 20px;">
+                Use a "do-while" loop when the program must execute the code block at least once (like a Menu-driven program).
+            </p>
+            <li><b>Infinite Loop:</b> A loop that never ends organically, e.g., <code>while(1) { ... }</code>.</li>
+            <li><b>Break Statement:</b> Immediately interrupts and exits the current active loop.</li>
+            <li><b>Continue Statement:</b> Skips the remaining operations in the current turn and jumps straight to the next iteration.</li>
         </ul>
 
-        <div class="important-note">
-            Exam Tip: Use a "do-while" loop when the program must execute the code block at least once (like a Menu-driven program).
+            
         </div>
     </div>
 </div>
-
-</body>
-</html>
